@@ -1,4 +1,4 @@
-AC_INIT()
+AC_INIT
 AC_CHECK_FUNCS()
 
 dnl ---------------------------------------------------------------------
@@ -183,7 +183,8 @@ AC_SUBST(USE_FCGI)
 
 
 
-AC_OUTPUT(Makefile src/ows_define.h demo/tinyows.xml demo/install.sh test/wfs_100/config_wfs_100.xml test/wfs_110/config_wfs_110.xml test/wfs_100/install_wfs_100.sh test/wfs_110/install_wfs_110.sh)
+AC_CONFIG_FILES([Makefile src/ows_define.h demo/tinyows.xml demo/install.sh test/wfs_100/config_wfs_100.xml test/wfs_110/config_wfs_110.xml test/wfs_100/install_wfs_100.sh test/wfs_110/install_wfs_110.sh])
+AC_OUTPUT
 
 rm -rf autom4te.cache
 rm -f config.log config.status
