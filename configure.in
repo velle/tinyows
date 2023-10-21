@@ -124,7 +124,7 @@ AC_SUBST(SHP2PGSQL)
 dnl ---------------------------------------------------------------------------
 dnl Flex check
 dnl ---------------------------------------------------------------------------
-AC_PROG_LEX
+AC_PROG_LEX([noyywrap])
 if test "$LEX" != flex; then
   AC_MSG_ERROR("TinyOWS: Need flex to compile")
 fi
@@ -136,7 +136,7 @@ dnl ---------------------------------------------------------------------------
 USE_FCGI=0
 AC_ARG_WITH(fastcgi,
 	    [  --with-fastcgi[[=ARG]]    Include FastCGI support: recommanded (ARG=no/path to fastcgi dir)],
-	    [FCGI_PATH="$withval"], [FCGI_PATH=""]) 
+	    [FCGI_PATH="$withval"], [FCGI_PATH=""])
 
 
 if test "x$FCGI_PATH" != "x"; then
@@ -153,7 +153,7 @@ if test "x$FCGI_PATH" != "xno"; then
  		])
 	])
 
-	dnl Some platforms use fastcgi subdir in include  
+	dnl Some platforms use fastcgi subdir in include
 	if test "$USE_FCGI" = "0" ; then
 		echo "checking now FCGI in alternate fastcgi include dir"
 		AC_CHECK_LIB(fcgi, FCGI_Accept, [
