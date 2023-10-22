@@ -11,9 +11,11 @@
 # https://www.gnu.org/software/automake/manual/html_node/Standard-Targets.html.
 
 rm -f Makefile
+rm -f src/ows_define.h
+
 rm -f demo/install.sh
 rm -f demo/tinyows.xml
-rm -f src/ows_define.h
+
 rm -f test/wfs_100/config_wfs_100.xml
 rm -f test/wfs_100/install_wfs_100.sh
 rm -f test/wfs_110/config_wfs_110.xml
