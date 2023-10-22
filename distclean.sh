@@ -10,7 +10,6 @@
 # Naming `distclean` given in accordance with Make target naming heuristics:
 # https://www.gnu.org/software/automake/manual/html_node/Standard-Targets.html.
 
-rm -f configure~
 rm -f Makefile
 rm -f demo/install.sh
 rm -f demo/tinyows.xml
@@ -19,7 +18,3 @@ rm -f test/wfs_100/config_wfs_100.xml
 rm -f test/wfs_100/install_wfs_100.sh
 rm -f test/wfs_110/config_wfs_110.xml
 rm -f test/wfs_110/install_wfs_110.sh
-
-# file `configure~` is created by ./configure, but only when folder
-# `autom4te.cache` (created by autoconf) is deleted before running ./configure.
-# foo
