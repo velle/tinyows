@@ -12,11 +12,18 @@ SHP2PGSQL=@SHP2PGSQL@
 DB=tinyows_demo
 
 if [ -d /usr/local/pgsql/share/contrib/postgis-3.3 ]; then
-        PGSHARE=/usr/local/pgsql/share/contrib/postgis-3.3
+    PGSHARE=/usr/local/pgsql/share/contrib/postgis-3.3
 elif [ -d /usr/local/pgsql/share/contrib/postgis-3.2 ]; then
-        PGSHARE=/usr/local/pgsql/share/contrib/postgis-3.2
+    PGSHARE=/usr/local/pgsql/share/contrib/postgis-3.2
 elif [ -d /usr/local/pgsql/share/contrib/postgis-3.1 ]; then
-        PGSHARE=/usr/local/pgsql/share/contrib/postgis-3.1
+    PGSHARE=/usr/local/pgsql/share/contrib/postgis-3.1
+
+elif [ -d @POSTGIS_SHARE@/contrib/postgis-3.3 ]; then
+	PGSHARE=@POSTGIS_SHARE@/contrib/postgis-3.3
+elif [ -d @POSTGIS_SHARE@/contrib/postgis-3.2 ]; then
+	PGSHARE=@POSTGIS_SHARE@/contrib/postgis-3.2
+elif [ -d @POSTGIS_SHARE@/contrib/postgis-3.1 ]; then
+	PGSHARE=@POSTGIS_SHARE@/contrib/postgis-3.1
 elif [ -d @POSTGIS_SHARE@/contrib/postgis-3.0 ]; then
 	PGSHARE=@POSTGIS_SHARE@/contrib/postgis-3.0
 elif [ -d @POSTGIS_SHARE@/contrib/postgis-2.5 ]; then
@@ -46,11 +53,11 @@ fi
 su $PGUSER -c "$PGBIN/psql $DB < $PGSHARE/postgis.sql"
 su $PGUSER -c "$PGBIN/psql $DB < $PGSHARE/spatial_ref_sys.sql"
 
-echo "Import layer data: world" 
+echo "Import layer data: world"
 $SHP2PGSQL -s 4326 -I demo/world.shp world > _world.sql
 su $PGUSER -c "$PGBIN/psql $DB < _world.sql"
 
-echo "Import layer data: france_dept" 
+echo "Import layer data: france_dept"
 $SHP2PGSQL -s 27582 -I -W latin1 demo/france.shp france > _france.sql
 su $PGUSER -c "$PGBIN/psql $DB < _france.sql"
 
