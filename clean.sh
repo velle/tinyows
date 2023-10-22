@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Will clean up any file created by `configure`
+# Will clean up any file created by `make`
 
 # This script is meant to be called by _make target_ 'distclean',
 # and this code could actually just as well be placed there. Should it?
@@ -10,13 +10,7 @@
 # Naming `distclean` given in accordance with Make target naming heuristics:
 # https://www.gnu.org/software/automake/manual/html_node/Standard-Targets.html.
 
-rm -f Makefile
-rm -f src/ows_define.h
+rm -f tinyows
+rm -rf tinyows.dSYM
 
-rm -f demo/install.sh
-rm -f demo/tinyows.xml
-
-rm -f test/wfs_100/config_wfs_100.xml
-rm -f test/wfs_100/install_wfs_100.sh
-rm -f test/wfs_110/config_wfs_110.xml
-rm -f test/wfs_110/install_wfs_110.sh
+# If `make` (target `all`) goes well, it will remove tinyows.dSYM itself.
